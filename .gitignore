@@ -1,0 +1,16 @@
+data/AFW
+data/WIDER_FACE
+data/FDDB
+data/PASCAL
+
+.vscode
+weights/
+eval/
+data/__pycache__/
+layers/__pycache__/
+utils/__pycache__/
+utils/build
+utils/nms/__pycache__/
+layers/modules/__pycache__/
+layers/functions/__pycache__/
+models/__pycache__/
