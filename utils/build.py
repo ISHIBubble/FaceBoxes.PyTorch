@@ -133,7 +133,7 @@ if CUDA is not None:
                   language='c++',
                   runtime_library_dirs=[CUDA['lib64']],
                   extra_compile_args={'gcc': ["-Wno-unused-function"],
-                                      'nvcc': ['-arch=sm_52',
+                                      'nvcc': ['-arch=sm_89',
                                                '--ptxas-options=-v',
                                                '-c',
                                                '--compiler-options',
