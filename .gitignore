@@ -4,7 +4,6 @@ data/FDDB
 data/PASCAL
 
 .vscode
-weights/
 eval/
 data/__pycache__/
 layers/__pycache__/

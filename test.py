@@ -13,9 +13,9 @@ from models.faceboxes import FaceBoxes
 from utils.box_utils import decode
 from utils.timer import Timer
 
-parser = argparse.ArgumentParser(description='FaceBoxes')
+parser = argparse.ArgumentParser(description='FaceBoxes-hardshrink')
 
-parser.add_argument('-m', '--trained_model', default='weights/FaceBoxes.pth',
+parser.add_argument('-m', '--trained_model', default='weights/FaceBoxes_hardshrink.pth',
                     type=str, help='Trained state_dict file path to open')
 parser.add_argument('--save_folder', default='eval/', type=str, help='Dir to save results')
 parser.add_argument('--cpu', action="store_true", default=False, help='Use cpu inference')
