@@ -14,3 +14,6 @@ utils/nms/__pycache__/
 layers/modules/__pycache__/
 layers/functions/__pycache__/
 models/__pycache__/
+
+utils/nms/cpu_nms.cpython-314-x86_64-linux-gnu.so
+utils/nms/gpu_nms.cpython-314-x86_64-linux-gnu.so
