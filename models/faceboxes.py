@@ -13,7 +13,8 @@ class BasicConv2d(nn.Module):
     def forward(self, x):
         x = self.conv(x)
         x = self.bn(x)
-        return F.relu(x, inplace=True)
+        # return F.relu(x, inplace=True)
+        return F.hardswish(x, inplace=True)
 
 
 class Inception(nn.Module):
@@ -56,7 +57,8 @@ class CRelu(nn.Module):
     x = self.conv(x)
     x = self.bn(x)
     x = torch.cat([x, -x], 1)
-    x = F.relu(x, inplace=True)
+    # x = F.relu(x, inplace=True)
+    x = F.hardswish(x, inplace=True)
     return x
 
 
