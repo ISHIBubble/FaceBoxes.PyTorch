@@ -14,7 +14,7 @@ class BasicConv2d(nn.Module):
         x = self.conv(x)
         x = self.bn(x)
         # return F.relu(x, inplace=True)
-        return F.prelu(x, inplace=True)
+        return F.leaky_relu(x, inplace=True)
 
 
 class Inception(nn.Module):
@@ -58,7 +58,7 @@ class CRelu(nn.Module):
     x = self.bn(x)
     x = torch.cat([x, -x], 1)
     # x = F.relu(x, inplace=True)
-    x = F.prelu(x, inplace=True)
+    x = F.leaky_relu(x, inplace=True)
     return x
 
 
