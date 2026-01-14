@@ -41,6 +41,7 @@ git clone https://github.com/zisianw/FaceBoxes.PyTorch.git
 ```Shell
 ./make.sh
 ```
+* This is machine spesific and will be updated
 
 _Note: Codes are based on Python 3+._
 

@@ -15,7 +15,7 @@ from models.faceboxes import FaceBoxes
 
 parser = argparse.ArgumentParser(description='FaceBoxes Training')
 parser.add_argument('--training_dataset', default='./data/WIDER_FACE', help='Training dataset directory')
-parser.add_argument('-b', '--batch_size', default=32, type=int, help='Batch size for training')
+parser.add_argument('-b', '--batch_size', default=64, type=int, help='Batch size for training')
 parser.add_argument('--num_workers', default=8, type=int, help='Number of workers used in dataloading')
 parser.add_argument('--ngpu', default=1, type=int, help='gpus')
 parser.add_argument('--lr', '--learning-rate', default=1e-3, type=float, help='initial learning rate')
@@ -41,7 +41,7 @@ momentum = args.momentum
 weight_decay = args.weight_decay
 initial_lr = args.lr
 gamma = args.gamma
-max_epoch = args.max_epoch
+max_epoch = args.max_epoch 
 training_dataset = args.training_dataset
 save_folder = args.save_folder
 gpu_train = cfg['gpu_train']
