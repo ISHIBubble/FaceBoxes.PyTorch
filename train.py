@@ -149,4 +149,8 @@ def adjust_learning_rate(optimizer, gamma, epoch, step_index, iteration, epoch_s
     return lr
 
 if __name__ == '__main__':
+    start = time.perf_counter()
     train()
+    end = time.perf_counter()
+    train_time = str(datetime.timedelta(seconds=end - start))
+    print("Training time: {}".format(train_time))
