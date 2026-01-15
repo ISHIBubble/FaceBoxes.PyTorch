@@ -15,8 +15,8 @@ from models.faceboxes import FaceBoxes
 
 parser = argparse.ArgumentParser(description='FaceBoxes Training')
 parser.add_argument('--training_dataset', default='./data/WIDER_FACE', help='Training dataset directory')
-parser.add_argument('-b', '--batch_size', default=64, type=int, help='Batch size for training')
-parser.add_argument('--num_workers', default=8, type=int, help='Number of workers used in dataloading')
+parser.add_argument('-b', '--batch_size', default=128, type=int, help='Batch size for training') # original 32
+parser.add_argument('--num_workers', default=16, type=int, help='Number of workers used in dataloading') # original 8
 parser.add_argument('--ngpu', default=1, type=int, help='gpus')
 parser.add_argument('--lr', '--learning-rate', default=1e-3, type=float, help='initial learning rate')
 parser.add_argument('--momentum', default=0.9, type=float, help='momentum')

@@ -4,7 +4,7 @@ data/FDDB
 data/PASCAL
 
 .vscode
-weights/
+weights/*epoch*.pthß
 eval/
 data/__pycache__/
 layers/__pycache__/
