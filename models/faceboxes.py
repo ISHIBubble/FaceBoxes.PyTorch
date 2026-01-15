@@ -28,7 +28,7 @@ class DSConv2d(nn.Module):
         x = self.depthwise(x)
         x = self.pointwise(x)
         x = self.bn(x)
-        return F.relu(x, inplace=True)
+        return F.hardswish(x, inplace=True)
 
 class Inception(nn.Module):
 
@@ -87,7 +87,7 @@ class DSCRelu(nn.Module):
       x = self.pointwise(x)
       x = self.bn(x)
       x = torch.cat([x, -x], 1)
-      x = F.relu(x, inplace=True)
+      x = F.hardswish(x, inplace=True)
       return x
 
 
