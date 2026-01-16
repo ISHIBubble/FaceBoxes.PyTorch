@@ -13,13 +13,17 @@ from models.faceboxes import FaceBoxes
 from utils.box_utils import decode
 from utils.timer import Timer
 
+# ========================================================================================
+# Test CLI command: python test.py --trained_model weights/{FILENAME} --dataset FDDB --cpu
+# ========================================================================================
+
 parser = argparse.ArgumentParser(description='FaceBoxes')
 
 parser.add_argument('-m', '--trained_model', default='weights/FaceBoxes.pth',
                     type=str, help='Trained state_dict file path to open')
 parser.add_argument('--save_folder', default='eval/', type=str, help='Dir to save results')
 parser.add_argument('--cpu', action="store_true", default=False, help='Use cpu inference')
-parser.add_argument('--dataset', default='PASCAL', type=str, choices=['AFW', 'PASCAL', 'FDDB'], help='dataset')
+parser.add_argument('--dataset', default='FDDB', type=str, choices=['AFW', 'PASCAL', 'FDDB'], help='dataset')
 parser.add_argument('--confidence_threshold', default=0.05, type=float, help='confidence_threshold')
 parser.add_argument('--top_k', default=5000, type=int, help='top_k')
 parser.add_argument('--nms_threshold', default=0.3, type=float, help='nms_threshold')
@@ -186,5 +190,9 @@ if __name__ == '__main__':
                             cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 255, 255))
             cv2.imshow('res', img_raw)
             cv2.waitKey(0)
+
+    print('\nAll done!')
+    print('Measurement took {:.3f} minutes'.format((_t['forward_pass'].total_time + _t['misc'].total_time) / 60))
+    print('FPS: {:.3f}'.format(num_images / (_t['forward_pass'].total_time + _t['misc'].total_time)))
 
     fw.close()
