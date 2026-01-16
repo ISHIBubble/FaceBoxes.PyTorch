@@ -34,7 +34,7 @@ class InvertedResidual(nn.Module):
                 # 1×1 pointwise conv to expand
                 nn.Conv2d(in_channels, hidden_dim, kernel_size=1, bias=False),
                 nn.BatchNorm2d(hidden_dim, eps=1e-5),
-                nn.Hardswish(inplace=True),  # Hardswish for quantization friendliness
+                nn.ReLU6(inplace=True),  # ReLU6 for quantization friendliness
             ])
         
         # Depthwise phase
@@ -43,7 +43,7 @@ class InvertedResidual(nn.Module):
             nn.Conv2d(hidden_dim, hidden_dim, kernel_size=3, stride=stride, 
                       padding=1, groups=hidden_dim, bias=False),
             nn.BatchNorm2d(hidden_dim, eps=1e-5),
-            nn.Hardswish(inplace=True),
+            nn.ReLU6(inplace=True),
         ])
         
         # Projection phase (LINEAR - no activation!)
@@ -64,7 +64,7 @@ class InvertedResidual(nn.Module):
 
 
 class DSConv2d(nn.Module):
-    """Depthwise Separable Convolution with Hardswish"""
+    """Depthwise Separable Convolution with ReLU6"""
     
     def __init__(self, in_channels, out_channels, **kwargs):
         super(DSConv2d, self).__init__()
@@ -76,7 +76,7 @@ class DSConv2d(nn.Module):
         x = self.depthwise(x)
         x = self.pointwise(x)
         x = self.bn(x)
-        return F.hardswish(x, inplace=True)
+        return F.relu6(x, inplace=True)
 
 
 class DSCRelu(nn.Module):
@@ -93,7 +93,7 @@ class DSCRelu(nn.Module):
         x = self.pointwise(x)
         x = self.bn(x)
         x = torch.cat([x, -x], 1)
-        x = F.hardswish(x, inplace=True)
+        x = F.relu6(x, inplace=True)
         return x
 
 
