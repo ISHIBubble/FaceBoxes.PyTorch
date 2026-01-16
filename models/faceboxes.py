@@ -152,21 +152,21 @@ class FaceBoxes(nn.Module):
         self.conv2 = DSCRelu(48, 64, kernel_size=5, stride=2, padding=2)
         
         # Inception modules with inverted residuals
-        self.inception1 = InceptionWithInvertedResidual(128, expand_ratio=4)
-        self.inception2 = InceptionWithInvertedResidual(128, expand_ratio=4)
-        self.inception3 = InceptionWithInvertedResidual(128, expand_ratio=4)
+        self.inception1 = InceptionWithInvertedResidual(128, expand_ratio=3)
+        self.inception2 = InceptionWithInvertedResidual(128, expand_ratio=3)
+        self.inception3 = InceptionWithInvertedResidual(128, expand_ratio=3)
 
         # Transition layers using inverted residuals
         # conv3: 128 → 256 with stride 2
         self.conv3 = nn.Sequential(
-            InvertedResidual(128, 128, stride=1, expand_ratio=6),
-            InvertedResidual(128, 256, stride=2, expand_ratio=6),
+            InvertedResidual(128, 128, stride=1, expand_ratio=4),
+            InvertedResidual(128, 256, stride=2, expand_ratio=4),
         )
 
         # conv4: 256 → 256 with stride 2
         self.conv4 = nn.Sequential(
-            InvertedResidual(256, 128, stride=1, expand_ratio=6),
-            InvertedResidual(128, 256, stride=2, expand_ratio=6),
+            InvertedResidual(256, 128, stride=1, expand_ratio=4),
+            InvertedResidual(128, 256, stride=2, expand_ratio=4),
         )
 
         self.loc, self.conf = self.multibox(self.num_classes)
