@@ -14,7 +14,7 @@ from utils.box_utils import decode
 from utils.timer import Timer
 
 # ========================================================================================
-# Test CLI command: python test.py --trained_model weights/{FILENAME} --dataset FDDB --cpu
+# Test CLI command: python test.py --trained_model weights/FaceBoxes_FL_CIoU.pth --dataset FDDB --cpu
 # ========================================================================================
 
 parser = argparse.ArgumentParser(description='FaceBoxes with Focal Loss and CIoU loss')
