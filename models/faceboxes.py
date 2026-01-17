@@ -15,7 +15,7 @@ class DSConv2d(nn.Module):
         x = self.depthwise(x)
         x = self.pointwise(x)
         x = self.bn(x)
-        return F.relu(x, inplace=True)
+        return F.hardswish(x, inplace=True)
 
 
 class Inception(nn.Module):
@@ -60,7 +60,7 @@ class DSCRelu(nn.Module):
         x = self.pointwise(x)
         x = self.bn(x)
         x = torch.cat([x, -x], 1)
-        x = F.relu(x, inplace=True)
+        x = F.hardswish(x, inplace=True)
         return x
 
 
@@ -84,7 +84,7 @@ class ChannelAttention(nn.Module):
         
         self.shared_mlp = nn.Sequential(
             nn.Conv2d(in_channels, reduced_channels, kernel_size=1, bias=False),
-            nn.ReLU(inplace=True),
+            nn.Hardswish(inplace=True),
             nn.Conv2d(reduced_channels, in_channels, kernel_size=1, bias=False)
         )
         
