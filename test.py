@@ -17,9 +17,9 @@ from utils.timer import Timer
 # Test CLI command: python test.py --trained_model weights/{FILENAME} --dataset FDDB --cpu
 # ========================================================================================
 
-parser = argparse.ArgumentParser(description='FaceBoxes')
+parser = argparse.ArgumentParser(description='FaceBoxes - Depthwise Separable Convolution and Inverted Residuals (with Linear Bottleneck and Hardswish)')
 
-parser.add_argument('-m', '--trained_model', default='weights/FaceBoxes.pth',
+parser.add_argument('-m', '--trained_model', default='weights/FaceBoxes_DS_IR_LB_HS.pth',
                     type=str, help='Trained state_dict file path to open')
 parser.add_argument('--save_folder', default='eval/', type=str, help='Dir to save results')
 parser.add_argument('--cpu', action="store_true", default=False, help='Use cpu inference')
