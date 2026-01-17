@@ -12,7 +12,7 @@ model = FaceBoxes(phase='train', size=1024, num_classes=2)
 total, trainable = count_parameters(model)
 
 print("="*60)
-print("Parame Count: (Model)")
+print("Parame Count: Basic with CBAM")
 print(f"Total parameters: {total:,}")
 print(f"Trainable parameters: {trainable:,}")
 print("="*60)
