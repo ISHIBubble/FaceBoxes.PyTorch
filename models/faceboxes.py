@@ -16,6 +16,71 @@ class BasicConv2d(nn.Module):
         return F.relu(x, inplace=True)
 
 
+class ChannelAttention(nn.Module):
+    """Channel Attention Module - learns 'what' to focus on."""
+    
+    def __init__(self, in_channels, reduction_ratio=16):
+        super(ChannelAttention, self).__init__()
+        self.avg_pool = nn.AdaptiveAvgPool2d(1)
+        self.max_pool = nn.AdaptiveMaxPool2d(1)
+        
+        # Shared MLP with reduction
+        reduced_channels = max(in_channels // reduction_ratio, 8)
+        self.shared_mlp = nn.Sequential(
+            nn.Conv2d(in_channels, reduced_channels, kernel_size=1, bias=False),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(reduced_channels, in_channels, kernel_size=1, bias=False)
+        )
+        self.sigmoid = nn.Sigmoid()
+    
+    def forward(self, x):
+        # Average pooling path
+        avg_out = self.shared_mlp(self.avg_pool(x))
+        # Max pooling path
+        max_out = self.shared_mlp(self.max_pool(x))
+        # Combine and apply sigmoid
+        attention = self.sigmoid(avg_out + max_out)
+        return x * attention
+
+
+class SpatialAttention(nn.Module):
+    """Spatial Attention Module - learns 'where' to focus."""
+    
+    def __init__(self, kernel_size=7):
+        super(SpatialAttention, self).__init__()
+        padding = (kernel_size - 1) // 2
+        self.conv = nn.Conv2d(2, 1, kernel_size=kernel_size, padding=padding, bias=False)
+        self.bn = nn.BatchNorm2d(1)
+        self.sigmoid = nn.Sigmoid()
+    
+    def forward(self, x):
+        # Channel-wise pooling
+        avg_out = torch.mean(x, dim=1, keepdim=True)
+        max_out, _ = torch.max(x, dim=1, keepdim=True)
+        # Concatenate along channel dimension
+        spatial_descriptor = torch.cat([avg_out, max_out], dim=1)
+        # Apply convolution and sigmoid
+        attention = self.sigmoid(self.bn(self.conv(spatial_descriptor)))
+        return x * attention
+
+
+class CBAM(nn.Module):
+    """
+    Convolutional Block Attention Module.
+    Sequentially applies channel attention then spatial attention.
+    """
+    
+    def __init__(self, in_channels, reduction_ratio=16, spatial_kernel_size=7):
+        super(CBAM, self).__init__()
+        self.channel_attention = ChannelAttention(in_channels, reduction_ratio)
+        self.spatial_attention = SpatialAttention(spatial_kernel_size)
+    
+    def forward(self, x):
+        x = self.channel_attention(x)
+        x = self.spatial_attention(x)
+        return x
+
+
 class Inception(nn.Module):
 
   def __init__(self):
@@ -68,18 +133,30 @@ class FaceBoxes(nn.Module):
     self.num_classes = num_classes
     self.size = size
 
+    # RDCL (Rapidly Digested Convolutional Layers)
     self.conv1 = CRelu(3, 24, kernel_size=7, stride=4, padding=3)
     self.conv2 = CRelu(48, 64, kernel_size=5, stride=2, padding=2)
 
+    # MSCL (Multiple Scale Convolutional Layers)
     self.inception1 = Inception()
     self.inception2 = Inception()
     self.inception3 = Inception()
-
+    
+    # CBAM modules after each detection source
+    # After inception3 (128 channels)
+    self.cbam1 = CBAM(128, reduction_ratio=8, spatial_kernel_size=7)
+    
     self.conv3_1 = BasicConv2d(128, 128, kernel_size=1, stride=1, padding=0)
     self.conv3_2 = BasicConv2d(128, 256, kernel_size=3, stride=2, padding=1)
+    
+    # After conv3_2 (256 channels)
+    self.cbam2 = CBAM(256, reduction_ratio=16, spatial_kernel_size=7)
 
     self.conv4_1 = BasicConv2d(256, 128, kernel_size=1, stride=1, padding=0)
     self.conv4_2 = BasicConv2d(128, 256, kernel_size=3, stride=2, padding=1)
+    
+    # After conv4_2 (256 channels)
+    self.cbam3 = CBAM(256, reduction_ratio=16, spatial_kernel_size=7)
 
     self.loc, self.conf = self.multibox(self.num_classes)
 
@@ -115,21 +192,33 @@ class FaceBoxes(nn.Module):
     loc = list()
     conf = list()
 
+    # RDCL
     x = self.conv1(x)
     x = F.max_pool2d(x, kernel_size=3, stride=2, padding=1)
     x = self.conv2(x)
     x = F.max_pool2d(x, kernel_size=3, stride=2, padding=1)
+    
+    # MSCL with Inception blocks
     x = self.inception1(x)
     x = self.inception2(x)
     x = self.inception3(x)
+    
+    # Apply CBAM to first detection source
+    x = self.cbam1(x)
     detection_sources.append(x)
 
     x = self.conv3_1(x)
     x = self.conv3_2(x)
+    
+    # Apply CBAM to second detection source
+    x = self.cbam2(x)
     detection_sources.append(x)
 
     x = self.conv4_1(x)
     x = self.conv4_2(x)
+    
+    # Apply CBAM to third detection source
+    x = self.cbam3(x)
     detection_sources.append(x)
 
     for (x, l, c) in zip(detection_sources, self.loc, self.conf):
