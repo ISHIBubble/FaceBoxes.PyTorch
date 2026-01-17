@@ -6,7 +6,7 @@ import torch.backends.cudnn as cudnn
 import argparse
 import torch.utils.data as data
 from data import AnnotationTransform, VOCDetection, detection_collate, preproc, cfg
-from layers.modules import MultiBoxLoss
+from layers.modules import FocalCIoULoss
 from layers.functions.prior_box import PriorBox
 import time
 import datetime
@@ -73,7 +73,19 @@ cudnn.benchmark = True
 net = net.to(device)
 
 optimizer = optim.SGD(net.parameters(), lr=initial_lr, momentum=momentum, weight_decay=weight_decay)
-criterion = MultiBoxLoss(num_classes, 0.35, True, 0, True, 7, 0.35, False)
+# Focal Loss (gamma=2.0, alpha=0.25) + CIoU Loss for localization
+criterion = FocalCIoULoss(
+    num_classes=num_classes,
+    overlap_thresh=0.35,
+    prior_for_matching=True,
+    bkg_label=0,
+    neg_mining=True,      # Not used with Focal Loss, kept for interface compatibility
+    neg_pos=7,            # Not used with Focal Loss
+    neg_overlap=0.35,
+    encode_target=False,
+    focal_alpha=0.25,     # RetinaNet default
+    focal_gamma=2.0       # RetinaNet default
+)
 
 priorbox = PriorBox(cfg, image_size=(img_dim, img_dim))
 with torch.no_grad():
