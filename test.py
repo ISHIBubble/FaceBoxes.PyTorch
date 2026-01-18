@@ -14,7 +14,7 @@ from utils.box_utils import decode
 from utils.timer import Timer
 
 # ========================================================================================
-# Test CLI command: python test.py --trained_model weights/FaceBoxes_FL_CIoU_DS_CBAM_HS.pth --dataset FDDB --cpu
+# Test CLI command: python test.py --trained_model weights/FaceBoxes_FL_CIoU_DS_CBAM_HS.pth --dataset PASCAL --cpu
 # ========================================================================================
 
 parser = argparse.ArgumentParser(description='FaceBoxes with Focal Loss, CIoU Loss, DSConv, CBAM and Hard-Swish Activation')
@@ -23,7 +23,7 @@ parser.add_argument('-m', '--trained_model', default='weights/FaceBoxes_FL_CIoU_
                     type=str, help='Trained state_dict file path to open')
 parser.add_argument('--save_folder', default='eval/', type=str, help='Dir to save results')
 parser.add_argument('--cpu', action="store_true", default=False, help='Use cpu inference')
-parser.add_argument('--dataset', default='FDDB', type=str, choices=['AFW', 'PASCAL', 'FDDB'], help='dataset')
+parser.add_argument('--dataset', default='PASCAL', type=str, choices=['AFW', 'PASCAL', 'FDDB'], help='dataset')
 parser.add_argument('--confidence_threshold', default=0.05, type=float, help='confidence_threshold')
 parser.add_argument('--top_k', default=5000, type=int, help='top_k')
 parser.add_argument('--nms_threshold', default=0.3, type=float, help='nms_threshold')
