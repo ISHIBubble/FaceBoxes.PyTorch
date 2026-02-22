@@ -14,3 +14,5 @@ utils/nms/__pycache__/
 layers/modules/__pycache__/
 layers/functions/__pycache__/
 models/__pycache__/
+results/checkpoints
+results/grid_search_results*

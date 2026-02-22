@@ -259,6 +259,9 @@ class FocalCIoULoss(nn.Module):
         
         # Get p_t (probability of true class)
         p_t = (pred_softmax * target_one_hot).sum(dim=1)
+        # Clamp to avoid NaN: (1 - p_t)^γ is NaN when p_t > 1 (float rounding)
+        # and fractional γ (e.g. 0.5) computes sqrt of a negative number.
+        p_t = p_t.clamp(min=1e-7, max=1.0 - 1e-7)
         
         # Compute focal weight: (1 - p_t)^γ
         focal_weight = (1 - p_t) ** self.focal_gamma
