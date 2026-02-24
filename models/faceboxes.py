@@ -19,7 +19,7 @@ class InvertedResidual(nn.Module):
         expand_ratio: Expansion factor for hidden dimension
     """
     
-    def __init__(self, in_channels, out_channels, stride=1, expand_ratio=6):
+    def __init__(self, in_channels, out_channels, stride=1, expand_ratio=3):
         super(InvertedResidual, self).__init__()
         self.stride = stride
         self.use_residual = (stride == 1 and in_channels == out_channels)
@@ -103,7 +103,7 @@ class InceptionWithInvertedResidual(nn.Module):
     Replaces standard convolutions with inverted residual blocks.
     """
     
-    def __init__(self, in_channels=128, expand_ratio=4):
+    def __init__(self, in_channels=128, expand_ratio=3):
         super(InceptionWithInvertedResidual, self).__init__()
         
         # Branch 1: 1×1 path (use small expansion since it's already 1×1)
@@ -159,14 +159,14 @@ class FaceBoxes(nn.Module):
         # Transition layers using inverted residuals
         # conv3: 128 → 256 with stride 2
         self.conv3 = nn.Sequential(
-            InvertedResidual(128, 128, stride=1, expand_ratio=4),
-            InvertedResidual(128, 256, stride=2, expand_ratio=4),
+            InvertedResidual(128, 128, stride=1, expand_ratio=3),
+            InvertedResidual(128, 256, stride=2, expand_ratio=3),
         )
 
         # conv4: 256 → 256 with stride 2
         self.conv4 = nn.Sequential(
-            InvertedResidual(256, 128, stride=1, expand_ratio=4),
-            InvertedResidual(128, 256, stride=2, expand_ratio=4),
+            InvertedResidual(256, 128, stride=1, expand_ratio=3),
+            InvertedResidual(128, 256, stride=2, expand_ratio=3),
         )
 
         self.loc, self.conf = self.multibox(self.num_classes)
