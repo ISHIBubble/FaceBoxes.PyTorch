@@ -1,0 +1,632 @@
+{
+  "completed_rounds": 5,
+  "configs": [
+    {
+      "id": 0,
+      "focal_alpha": 0.1,
+      "focal_gamma": 0.5,
+      "epochs_trained": 30,
+      "loss_history": [
+        1.044818922396629,
+        0.9748016609151665
+      ],
+      "loss_l_history": [
+        0.3586109410000794,
+        0.335340812247681
+      ],
+      "loss_c_history": [
+        0.32759703762330133,
+        0.3041200360870243
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 1,
+      "focal_alpha": 0.1,
+      "focal_gamma": 1.0,
+      "epochs_trained": 30,
+      "loss_history": [
+        0.9596916712247409,
+        0.8943892292881722
+      ],
+      "loss_l_history": [
+        0.35570500203161026,
+        0.3330850006998621
+      ],
+      "loss_c_history": [
+        0.24828166786405645,
+        0.22821922766659455
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 2,
+      "focal_alpha": 0.1,
+      "focal_gamma": 1.5,
+      "epochs_trained": 30,
+      "loss_history": [
+        0.9157778369285924,
+        0.8487701185287968
+      ],
+      "loss_l_history": [
+        0.35995873002793,
+        0.3352452287307152
+      ],
+      "loss_c_history": [
+        0.19586037491302632,
+        0.1782796618808292
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 3,
+      "focal_alpha": 0.1,
+      "focal_gamma": 2.0,
+      "epochs_trained": 45,
+      "loss_history": [
+        0.865932612206149,
+        0.8095803308131972,
+        0.7795597904964948
+      ],
+      "loss_l_history": [
+        0.35708327203175566,
+        0.3355352851208623,
+        0.32348872199839457
+      ],
+      "loss_c_history": [
+        0.15176606738463821,
+        0.1385097616067891,
+        0.13258234622238882
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 4,
+      "focal_alpha": 0.1,
+      "focal_gamma": 3.0,
+      "epochs_trained": 45,
+      "loss_history": [
+        0.814318503250851,
+        0.7585471349377786,
+        0.731976679921446
+      ],
+      "loss_l_history": [
+        0.359848590479891,
+        0.33658278953496634,
+        0.32559422072642497
+      ],
+      "loss_c_history": [
+        0.0946213229381417,
+        0.08538155711577193,
+        0.08078823894927874
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 5,
+      "focal_alpha": 0.1,
+      "focal_gamma": 5.0,
+      "epochs_trained": 75,
+      "loss_history": [
+        0.7627621318211331,
+        0.7033466238241929,
+        0.6797836630723021,
+        0.6631847551235786,
+        0.6565433962469361
+      ],
+      "loss_l_history": [
+        0.36394580791960873,
+        0.33638004089703333,
+        0.32569036852780997,
+        0.3179070955100781,
+        0.314894101275108
+      ],
+      "loss_c_history": [
+        0.034870515667623087,
+        0.030586540994809817,
+        0.02840292619231617,
+        0.027370563715178677,
+        0.026755193382427652
+      ],
+      "active": true,
+      "checkpoint": "./results/checkpoints/config_5.pth"
+    },
+    {
+      "id": 6,
+      "focal_alpha": 0.25,
+      "focal_gamma": 0.5,
+      "epochs_trained": 15,
+      "loss_history": [
+        1.330429443650447
+      ],
+      "loss_l_history": [
+        0.354763694865532
+      ],
+      "loss_c_history": [
+        0.6209020536975293
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 7,
+      "focal_alpha": 0.25,
+      "focal_gamma": 1.0,
+      "epochs_trained": 15,
+      "loss_history": [
+        1.189051438354085
+      ],
+      "loss_l_history": [
+        0.3573559191327533
+      ],
+      "loss_c_history": [
+        0.4743396002364809
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 8,
+      "focal_alpha": 0.25,
+      "focal_gamma": 1.5,
+      "epochs_trained": 15,
+      "loss_history": [
+        1.0738756942098253
+      ],
+      "loss_l_history": [
+        0.3559217100255838
+      ],
+      "loss_c_history": [
+        0.36203227630324164
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 9,
+      "focal_alpha": 0.25,
+      "focal_gamma": 2.0,
+      "epochs_trained": 30,
+      "loss_history": [
+        1.000723632926089,
+        0.9291078866859228
+      ],
+      "loss_l_history": [
+        0.35966462259257104,
+        0.33630824750913285
+      ],
+      "loss_c_history": [
+        0.28139438836953184,
+        0.2564913913718524
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 10,
+      "focal_alpha": 0.25,
+      "focal_gamma": 3.0,
+      "epochs_trained": 45,
+      "loss_history": [
+        0.8918014424610374,
+        0.8286817553025617,
+        0.8023183193455263
+      ],
+      "loss_l_history": [
+        0.36157280088358423,
+        0.3382342766147689,
+        0.32835456673471863
+      ],
+      "loss_c_history": [
+        0.16865584159977087,
+        0.15221320161082905,
+        0.1456091873181369
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 11,
+      "focal_alpha": 0.25,
+      "focal_gamma": 5.0,
+      "epochs_trained": 75,
+      "loss_history": [
+        0.7847064316420638,
+        0.7292851177101988,
+        0.7044012796494269,
+        0.6829590930536427,
+        0.6737571272157854
+      ],
+      "loss_l_history": [
+        0.3625119104426789,
+        0.33860521739529026,
+        0.3275616692919885,
+        0.318066483469814,
+        0.3143519311403814
+      ],
+      "loss_c_history": [
+        0.059682611413022724,
+        0.052074681435972825,
+        0.0492779404553527,
+        0.0468261258598075,
+        0.04505326671447263
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 12,
+      "focal_alpha": 0.4,
+      "focal_gamma": 0.5,
+      "epochs_trained": 15,
+      "loss_history": [
+        1.5407991805680041
+      ],
+      "loss_l_history": [
+        0.35566957254267806
+      ],
+      "loss_c_history": [
+        0.8294600369616715
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 13,
+      "focal_alpha": 0.4,
+      "focal_gamma": 1.0,
+      "epochs_trained": 15,
+      "loss_history": [
+        1.340538476004494
+      ],
+      "loss_l_history": [
+        0.35767180193446707
+      ],
+      "loss_c_history": [
+        0.625194875611265
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 14,
+      "focal_alpha": 0.4,
+      "focal_gamma": 1.5,
+      "epochs_trained": 15,
+      "loss_history": [
+        1.1918895210580849
+      ],
+      "loss_l_history": [
+        0.3578398481713927
+      ],
+      "loss_c_history": [
+        0.47620982419764135
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 15,
+      "focal_alpha": 0.4,
+      "focal_gamma": 2.0,
+      "epochs_trained": 15,
+      "loss_history": [
+        1.0945862469543002
+      ],
+      "loss_l_history": [
+        0.3604330905613769
+      ],
+      "loss_c_history": [
+        0.37372006575759525
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 16,
+      "focal_alpha": 0.4,
+      "focal_gamma": 3.0,
+      "epochs_trained": 30,
+      "loss_history": [
+        0.94631236998674,
+        0.87086209588252
+      ],
+      "loss_l_history": [
+        0.3641226098274179,
+        0.33777519287749497
+      ],
+      "loss_c_history": [
+        0.21806715025795304,
+        0.19531171064518818
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 17,
+      "focal_alpha": 0.4,
+      "focal_gamma": 5.0,
+      "epochs_trained": 60,
+      "loss_history": [
+        0.803122541744715,
+        0.7472075178073003,
+        0.7181844804482188,
+        0.7055280606444952
+      ],
+      "loss_l_history": [
+        0.3644285616892443,
+        0.3408793812945818,
+        0.3283978405202885,
+        0.3233098517132752
+      ],
+      "loss_c_history": [
+        0.07426541739561718,
+        0.06544875588369725,
+        0.06138879753113089,
+        0.05890835618262847
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 18,
+      "focal_alpha": 0.55,
+      "focal_gamma": 0.5,
+      "epochs_trained": 15,
+      "loss_history": [
+        1.6810960639499257
+      ],
+      "loss_l_history": [
+        0.35610644685719206
+      ],
+      "loss_c_history": [
+        0.9688831711229556
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 19,
+      "focal_alpha": 0.55,
+      "focal_gamma": 1.0,
+      "epochs_trained": 15,
+      "loss_history": [
+        1.4529886242769492
+      ],
+      "loss_l_history": [
+        0.35873219940266005
+      ],
+      "loss_c_history": [
+        0.7355242278380666
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 20,
+      "focal_alpha": 0.55,
+      "focal_gamma": 1.5,
+      "epochs_trained": 15,
+      "loss_history": [
+        1.268397242348484
+      ],
+      "loss_l_history": [
+        0.358890113996217
+      ],
+      "loss_c_history": [
+        0.5506170144300011
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 21,
+      "focal_alpha": 0.55,
+      "focal_gamma": 2.0,
+      "epochs_trained": 15,
+      "loss_history": [
+        1.144857327192652
+      ],
+      "loss_l_history": [
+        0.36059671514679126
+      ],
+      "loss_c_history": [
+        0.4236638966032648
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 22,
+      "focal_alpha": 0.55,
+      "focal_gamma": 3.0,
+      "epochs_trained": 30,
+      "loss_history": [
+        0.9701355388087611,
+        0.8988576615714553
+      ],
+      "loss_l_history": [
+        0.36346541851685005,
+        0.33974006202617296
+      ],
+      "loss_c_history": [
+        0.24320470062881783,
+        0.2193775371493536
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 23,
+      "focal_alpha": 0.55,
+      "focal_gamma": 5.0,
+      "epochs_trained": 45,
+      "loss_history": [
+        0.81321940099631,
+        0.756284282018174,
+        0.7253838171142503
+      ],
+      "loss_l_history": [
+        0.3654160613457559,
+        0.34199795637178065,
+        0.32898048849466716
+      ],
+      "loss_c_history": [
+        0.08238727701065263,
+        0.07228836815610121,
+        0.06742284031903774
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 24,
+      "focal_alpha": 0.75,
+      "focal_gamma": 0.5,
+      "epochs_trained": 15,
+      "loss_history": [
+        1.751442062351899
+      ],
+      "loss_l_history": [
+        0.3605988147684717
+      ],
+      "loss_c_history": [
+        1.0302444357730023
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 25,
+      "focal_alpha": 0.75,
+      "focal_gamma": 1.0,
+      "epochs_trained": 15,
+      "loss_history": [
+        1.4848091055086765
+      ],
+      "loss_l_history": [
+        0.36149495011819505
+      ],
+      "loss_c_history": [
+        0.761819207195017
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 26,
+      "focal_alpha": 0.75,
+      "focal_gamma": 1.5,
+      "epochs_trained": 15,
+      "loss_history": [
+        1.296180965143161
+      ],
+      "loss_l_history": [
+        0.36078150551904814
+      ],
+      "loss_c_history": [
+        0.5746179539571625
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 27,
+      "focal_alpha": 0.75,
+      "focal_gamma": 2.0,
+      "epochs_trained": 15,
+      "loss_history": [
+        1.1589723278216038
+      ],
+      "loss_l_history": [
+        0.36149801946159626
+      ],
+      "loss_c_history": [
+        0.43597628971187413
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 28,
+      "focal_alpha": 0.75,
+      "focal_gamma": 3.0,
+      "epochs_trained": 30,
+      "loss_history": [
+        0.9682431127829824,
+        0.901571100314261
+      ],
+      "loss_l_history": [
+        0.3597088577433792,
+        0.3392902579038374
+      ],
+      "loss_c_history": [
+        0.24882539818363805,
+        0.2229905856158538
+      ],
+      "active": false,
+      "checkpoint": null
+    },
+    {
+      "id": 29,
+      "focal_alpha": 0.75,
+      "focal_gamma": 5.0,
+      "epochs_trained": 60,
+      "loss_history": [
+        0.8147773390668201,
+        0.7538778341141883,
+        0.7235564988836757,
+        0.7098129548446712
+      ],
+      "loss_l_history": [
+        0.3663465632842137,
+        0.34103401426789776,
+        0.32847968871628974,
+        0.3228962372609463
+      ],
+      "loss_c_history": [
+        0.08208421164795424,
+        0.07180980633639224,
+        0.06659712113680379,
+        0.0640204807757296
+      ],
+      "active": false,
+      "checkpoint": null
+    }
+  ],
+  "args": {
+    "alphas": [
+      0.1,
+      0.25,
+      0.4,
+      0.55,
+      0.75
+    ],
+    "gammas": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      5.0
+    ],
+    "epochs_per_round": 15,
+    "min_survivors": 1,
+    "keep_ratio": 0.5,
+    "training_dataset": "./data/WIDER_FACE",
+    "batch_size": 32,
+    "num_workers": 16,
+    "ngpu": 1,
+    "lr": 0.001,
+    "momentum": 0.9,
+    "weight_decay": 0.0005,
+    "gamma": 0.1,
+    "results_dir": "./results",
+    "resume": null
+  }
+}

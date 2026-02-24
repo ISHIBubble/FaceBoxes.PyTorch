@@ -30,13 +30,13 @@ class FocalCIoULoss(nn.Module):
         neg_pos: Negative to positive ratio (not used with focal loss)
         neg_overlap: Overlap threshold for negatives
         encode_target: Whether to encode targets
-        focal_alpha: Focal loss alpha parameter (default: 0.25)
-        focal_gamma: Focal loss gamma parameter (default: 2.0)
+        focal_alpha: Focal loss alpha parameter with optimized parameter 0.1 (old default: 0.25)
+        focal_gamma: Focal loss gamma parameter with optimized parameter 5.0(old default: 2.0)
     """
 
     def __init__(self, num_classes, overlap_thresh, prior_for_matching, 
                  bkg_label, neg_mining, neg_pos, neg_overlap, encode_target,
-                 focal_alpha=0.25, focal_gamma=2.0):
+                 focal_alpha=0.1, focal_gamma=5.0):
         super(FocalCIoULoss, self).__init__()
         self.num_classes = num_classes
         self.threshold = overlap_thresh
