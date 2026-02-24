@@ -19,7 +19,7 @@ class InvertedResidual(nn.Module):
         expand_ratio: Expansion factor for hidden dimension
     """
     
-    def __init__(self, in_channels, out_channels, stride=1, expand_ratio=6):
+    def __init__(self, in_channels, out_channels, stride=1, expand_ratio=3):
         super(InvertedResidual, self).__init__()
         self.stride = stride
         self.use_residual = (stride == 1 and in_channels == out_channels)
@@ -122,11 +122,12 @@ class CRelu(nn.Module):
 
 class FaceBoxes(nn.Module):
 
-  def __init__(self, phase, size, num_classes):
+  def __init__(self, phase, size, num_classes, expand_ratio=3):
     super(FaceBoxes, self).__init__()
     self.phase = phase
     self.num_classes = num_classes
     self.size = size
+    self.expand_ratio = expand_ratio
 
     self.conv1 = CRelu(3, 24, kernel_size=7, stride=4, padding=3)
     self.conv2 = CRelu(48, 64, kernel_size=5, stride=2, padding=2)
@@ -138,14 +139,14 @@ class FaceBoxes(nn.Module):
     # Transition layers using Inverted Residuals with Linear Bottleneck
     # conv3: 128 → 256 with stride 2
     self.conv3 = nn.Sequential(
-        InvertedResidual(128, 128, stride=1, expand_ratio=4),
-        InvertedResidual(128, 256, stride=2, expand_ratio=4),
+        InvertedResidual(128, 128, stride=1, expand_ratio=expand_ratio),
+        InvertedResidual(128, 256, stride=2, expand_ratio=expand_ratio),
     )
 
     # conv4: 256 → 256 with stride 2
     self.conv4 = nn.Sequential(
-        InvertedResidual(256, 128, stride=1, expand_ratio=4),
-        InvertedResidual(128, 256, stride=2, expand_ratio=4),
+        InvertedResidual(256, 128, stride=1, expand_ratio=expand_ratio),
+        InvertedResidual(128, 256, stride=2, expand_ratio=expand_ratio),
     )
 
     self.loc, self.conf = self.multibox(self.num_classes)
